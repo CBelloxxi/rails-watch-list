@@ -1778,3 +1778,130 @@ Completed 200 OK in 27ms (Views: 24.8ms | ActiveRecord: 1.1ms | Allocations: 127
   [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8791485322053296205)[0m
   [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/lists/new" for ::1 at 2022-02-18 15:56:04 +0000
+Processing by ListsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering lists/new.html.erb within layouts/application
+  Rendered lists/new.html.erb within layouts/application (Duration: 3.7ms | Allocations: 3501)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 0.8ms | Allocations: 588)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 66)
+  Rendered layout layouts/application.html.erb (Duration: 15.4ms | Allocations: 14756)
+Completed 200 OK in 30ms (Views: 15.9ms | ActiveRecord: 8.8ms | Allocations: 20253)
+
+
+Started GET "/" for ::1 at 2022-02-18 15:56:04 +0000
+Processing by ListsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering lists/index.html.erb within layouts/application
+  [1m[36mList Load (1.0ms)[0m  [1m[34mSELECT "lists".* FROM "lists"[0m
+  ↳ app/views/lists/index.html.erb:13
+  Rendered lists/index.html.erb within layouts/application (Duration: 22.0ms | Allocations: 1685)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 1.0ms | Allocations: 563)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 55)
+  Rendered layout layouts/application.html.erb (Duration: 50.0ms | Allocations: 12671)
+Completed 200 OK in 52ms (Views: 49.7ms | ActiveRecord: 1.0ms | Allocations: 13241)
+
+
+Started GET "/" for ::1 at 2022-02-18 15:56:06 +0000
+Processing by ListsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering lists/index.html.erb within layouts/application
+  [1m[36mList Load (1.9ms)[0m  [1m[34mSELECT "lists".* FROM "lists"[0m
+  ↳ app/views/lists/index.html.erb:13
+  Rendered lists/index.html.erb within layouts/application (Duration: 8.6ms | Allocations: 1515)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 1.2ms | Allocations: 561)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 55)
+  Rendered layout layouts/application.html.erb (Duration: 31.2ms | Allocations: 12329)
+Completed 200 OK in 33ms (Views: 30.0ms | ActiveRecord: 1.9ms | Allocations: 12790)
+
+
+Started GET "/lists/1" for ::1 at 2022-02-18 15:56:08 +0000
+Processing by ListsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mList Load (1.0ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/lists_controller.rb:34:in `set_list'
+  Rendering layout layouts/application.html.erb
+  Rendering lists/show.html.erb within layouts/application
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "movies" INNER JOIN "bookmarks" ON "movies"."id" = "bookmarks"."movie_id" WHERE "bookmarks"."list_id" = $1[0m  [["list_id", 1]]
+  ↳ app/views/lists/show.html.erb:5
+  [1m[36mReview Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "reviews" WHERE "reviews"."list_id" = $1 LIMIT $2[0m  [["list_id", 1], ["LIMIT", 1]]
+  ↳ app/views/lists/show.html.erb:41
+  [1m[36mReview Load (0.9ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."list_id" = $1[0m  [["list_id", 1]]
+  ↳ app/views/lists/show.html.erb:44
+  [1m[36mMovie Load (1.9ms)[0m  [1m[34mSELECT "movies".* FROM "movies" ORDER BY "movies"."title" ASC[0m
+  ↳ app/views/bookmarks/_new.html.erb:10
+  Rendered bookmarks/_new.html.erb (Duration: 23.8ms | Allocations: 15244)
+  Rendered lists/show.html.erb within layouts/application (Duration: 58.7ms | Allocations: 29399)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 0.5ms | Allocations: 565)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 61)
+  Rendered layout layouts/application.html.erb (Duration: 69.8ms | Allocations: 40255)
+Completed 200 OK in 106ms (Views: 61.1ms | ActiveRecord: 21.0ms | Allocations: 49626)
+
+
+Started POST "/lists/1/reviews" for ::1 at 2022-02-18 15:56:19 +0000
+Processing by ReviewsController#create as HTML
+  Parameters: {"authenticity_token"=>"GXU3k4D1NRldAYqN2IJhyeU1K8OYqBuqwt1nCdUZkTS33kaI0rnLJZWWVT/s+2jY4axPlY3nZ3rScaA9FnreYQ==", "review"=>{"comment"=>"Sick film", "rating"=>"3"}, "commit"=>"Create Review", "list_id"=>"1"}
+  [1m[36mList Load (1.5ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:4:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:6:in `create'
+  [1m[36mReview Create (4.3ms)[0m  [1m[32mINSERT INTO "reviews" ("list_id", "comment", "rating", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["list_id", 1], ["comment", "Sick film"], ["rating", 3], ["created_at", "2022-02-18 15:56:19.686893"], ["updated_at", "2022-02-18 15:56:19.686893"]]
+  ↳ app/controllers/reviews_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:6:in `create'
+Redirected to http://localhost:3000/lists/1
+Completed 302 Found in 22ms (ActiveRecord: 7.7ms | Allocations: 3965)
+
+
+Started GET "/lists/1" for ::1 at 2022-02-18 15:56:19 +0000
+Processing by ListsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mList Load (0.8ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/lists_controller.rb:34:in `set_list'
+  Rendering layout layouts/application.html.erb
+  Rendering lists/show.html.erb within layouts/application
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "movies" INNER JOIN "bookmarks" ON "movies"."id" = "bookmarks"."movie_id" WHERE "bookmarks"."list_id" = $1[0m  [["list_id", 1]]
+  ↳ app/views/lists/show.html.erb:5
+  [1m[36mReview Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "reviews" WHERE "reviews"."list_id" = $1 LIMIT $2[0m  [["list_id", 1], ["LIMIT", 1]]
+  ↳ app/views/lists/show.html.erb:41
+  [1m[36mReview Load (0.8ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."list_id" = $1[0m  [["list_id", 1]]
+  ↳ app/views/lists/show.html.erb:44
+  [1m[36mMovie Load (2.8ms)[0m  [1m[34mSELECT "movies".* FROM "movies" ORDER BY "movies"."title" ASC[0m
+  ↳ app/views/bookmarks/_new.html.erb:10
+  Rendered bookmarks/_new.html.erb (Duration: 27.9ms | Allocations: 12395)
+  Rendered lists/show.html.erb within layouts/application (Duration: 48.0ms | Allocations: 21656)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 1.9ms | Allocations: 565)
+  Rendered shared/_flashes.html.erb (Duration: 0.2ms | Allocations: 60)
+  Rendered layout layouts/application.html.erb (Duration: 62.9ms | Allocations: 32580)
+Completed 200 OK in 67ms (Views: 57.9ms | ActiveRecord: 6.4ms | Allocations: 33838)
+
+
+Started GET "/lists/1" for ::1 at 2022-02-18 15:56:25 +0000
+Processing by ListsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mList Load (0.9ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/lists_controller.rb:34:in `set_list'
+  Rendering layout layouts/application.html.erb
+  Rendering lists/show.html.erb within layouts/application
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "movies" INNER JOIN "bookmarks" ON "movies"."id" = "bookmarks"."movie_id" WHERE "bookmarks"."list_id" = $1[0m  [["list_id", 1]]
+  ↳ app/views/lists/show.html.erb:5
+  [1m[36mReview Exists? (2.1ms)[0m  [1m[34mSELECT 1 AS one FROM "reviews" WHERE "reviews"."list_id" = $1 LIMIT $2[0m  [["list_id", 1], ["LIMIT", 1]]
+  ↳ app/views/lists/show.html.erb:41
+  [1m[36mReview Load (1.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."list_id" = $1[0m  [["list_id", 1]]
+  ↳ app/views/lists/show.html.erb:44
+  [1m[36mMovie Load (2.0ms)[0m  [1m[34mSELECT "movies".* FROM "movies" ORDER BY "movies"."title" ASC[0m
+  ↳ app/views/bookmarks/_new.html.erb:10
+  Rendered bookmarks/_new.html.erb (Duration: 25.9ms | Allocations: 12371)
+  Rendered lists/show.html.erb within layouts/application (Duration: 55.7ms | Allocations: 21195)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 0.7ms | Allocations: 562)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 55)
+  Rendered layout layouts/application.html.erb (Duration: 68.7ms | Allocations: 32072)
+Completed 200 OK in 73ms (Views: 61.8ms | ActiveRecord: 8.4ms | Allocations: 33288)
+
+
